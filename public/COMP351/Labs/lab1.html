@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="shortcut icon" type="image/ico" href="../../img/favicon.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="../../css/code_highlighting.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<title>THEO COMP 351</title>
+
+<body class="bg-light">
+    <div class="container">
+        <h1>Theo's COMP 351 Website - Lab 1 - Hard-Coded Quiz</h1>
+
+        <div class="border row mt-3">
+            <div class="col-1 w-100 pt-5" id="q1"></div>
+            <div class="col m-3">
+                Q1 - What is the final output of this snippet?
+                <hr>
+                <pre class="bg-white">
+
+                <span class="variables">let</span> x <span class="operators">=</span> 20;
+                <span class="loops">for</span> (i <span class="operators">=</span> 0; i <span class="operators">&lt;</span> 3; i<span class="operators">++</span>) {
+                    x <span class="operators">+=</span> i;
+                }
+                <span class="objects">console</span>.log(x);
+            </pre>
+                <hr>
+                <ul class="list-group">
+                    <li class="list-group-item"><input type="radio" name="q1" value="a"> 30</li>
+                    <li class="list-group-item"><input type="radio" name="q1" value="b"> 65</li>
+                    <li class="list-group-item"><input type="radio" name="q1" value="c"> 33</li>
+                    <li class="list-group-item"><input type="radio" name="q1" value="d"> 23</li>
+                </ul>
+
+                <hr>
+
+                <button type="button" onclick="checkAnswer('q1')" id="q1button" class="btn bg-warning text-white">Check
+                    Answer</button>
+
+            </div>
+        </div>
+        <div class="border row mt-3">
+            <div class="col-1 w-100 pt-5" id="q2"></div>
+            <div class="col m-3">
+                Q2 - Given the following JSON object, which response is equivalent to <span class="myCode"> <span
+                        class="objects">food</span>.name <span class="operators">==</span> <span
+                        class="strings">"pizza"</span></span>?
+                <hr>
+                <pre class="bg-white">
+                <span class="objects">food</span> <span class="operators">=</span> {
+                    <span class="variables">name</span>: <span class="strings">"pizza"</span>
+                }
+                </pre>
+                <hr>
+                <ul class="list-group">
+                    <li class="list-group-item"><input type="radio" name="q2" value="a"> <span class="myCode"><span
+                                class="objects">food</span>(<span class="strings">"name"</span>) <span
+                                class="operators">==</span> <span class="strings">"pizza"</span></span></li>
+                    <li class="list-group-item"><input type="radio" name="q2" value="b"> <span class="myCode"><span
+                                class="objects">food</span>{<span class="strings">"name"</span>} <span
+                                class="operators">==</span> <span class="strings">"pizza"</span></span></li>
+                    <li class="list-group-item"><input type="radio" name="q2" value="c"> <span class="myCode"><span
+                                class="objects">food</span>[<span class="strings">"name"</span>] <span
+                                class="operators">==</span> <span class="strings">"pizza"</span></span></li>
+                    <li class="list-group-item"><input type="radio" name="q2" value="d"> <span class="myCode"><span
+                                class="objects">food</span>.<span class="strings">"name"</span> <span
+                                class="operators">==</span> <span class="strings">"pizza"</span></span></li>
+                </ul>
+
+                <hr>
+
+                <button type="button" onclick="checkAnswer('q2')" id="q2button" class="btn bg-warning text-white">Check
+                    Answer</button>
+
+            </div>
+        </div>
+        <div class="border row mt-3">
+            <div class="col-1 w-100 pt-5" id="q3"></div>
+            <div class="col m-3">
+                Q3 - What is "<span class="myCode"><span class="variables">let</span> func <span
+                        class="operators">=</span> (arg1, arg2, ...argN) <span class="operators">=></span>
+                    expression</span>" an example of?
+                <hr>
+                <ul class="list-group">
+                    <li class="list-group-item"><input type="radio" name="q3" value="a"> An Asynchronous Function Call
+                    </li>
+                    <li class="list-group-item"><input type="radio" name="q3" value="b"> Polymorphism</li>
+                    <li class="list-group-item"><input type="radio" name="q3" value="c"> Concatenation</li>
+                    <li class="list-group-item"><input type="radio" name="q3" value="d"> An Arrow Function</li>
+                </ul>
+
+                <hr>
+
+                <button type="button" onclick="checkAnswer('q3')" id="q3button" class="btn bg-warning text-white">Check
+                    Answer</button>
+
+            </div>
+        </div>
+        <div class="border row mt-3">
+            <div class="col-1 w-100 pt-5" id="q4"></div>
+            <div class="col m-3">
+                Q4 - What is the final value of <span class="myCode">x</span>?
+                <hr>
+                <pre class="bg-white">
+                x <span class="operators">=</span> <span class="booleans">true</span>;
+                x <span class="operators">=</span> (y <span class="operators">?? !</span>x <span class="operators">??</span> <span class="booleans">true</span>);
+                </pre>
+                <hr>
+                <ul class="list-group">
+                    <li class="list-group-item"><input type="radio" name="q4" value="a"> <span
+                            class="myCode booleans">true</span></li>
+                    <li class="list-group-item"><input type="radio" name="q4" value="b"> <span
+                            class="myCode booleans">false</span></li>
+                    <li class="list-group-item"><input type="radio" name="q4" value="c"> <span
+                            class="myCode objects">undefined</span></li>
+                </ul>
+
+                <hr>
+
+                <button type="button" onclick="checkAnswer('q4')" id="q4button" class="btn bg-warning text-white">Check
+                    Answer</button>
+
+            </div>
+        </div>
+        <div class="border row mt-3">
+            <div class="col-1 w-100 pt-5" id="q5"></div>
+            <div class="col m-3">
+                Q5 - What is the precedence of the <span class="myCode operators">??</span> operator?
+                <hr>
+                <ul class="list-group">
+                    <li class="list-group-item"><input type="radio" name="q5" value="a"> Before <span
+                            class="myCode operators">=</span> and <span class="myCode operators">?</span>, and before
+                        <span class="myCode operators">+</span> and <span class="myCode operators">*</span>
+                    </li>
+                    <li class="list-group-item"><input type="radio" name="q5" value="b"> Before <span
+                            class="myCode operators">=</span> and <span class="myCode operators">?</span>, and after
+                        <span class="myCode operators">+</span> and <span class="myCode operators">*</span>
+                    </li>
+                    <li class="list-group-item"><input type="radio" name="q5" value="c"> After <span
+                            class="myCode operators">=</span> and <span class="myCode operators">?</span>, and before
+                        <span class="myCode operators">+</span> and <span class="myCode operators">*</span>
+                    </li>
+                    <li class="list-group-item"><input type="radio" name="q5" value="d"> After <span
+                            class="myCode operators">=</span> and <span class="myCode operators">?</span>, and after
+                        <span class="myCode operators">+</span> and <span class="myCode operators">*</span>
+                    </li>
+                </ul>
+
+                <hr>
+
+                <button type="button" onclick="checkAnswer('q5')" id="q5button" class="btn bg-warning text-white">Check
+                    Answer</button>
+
+            </div>
+        </div>
+        <div class="border row mt-3">
+            <div class="col-1 w-100 pt-5" id="q6"></div>
+            <div class="col m-3">
+                Q6 - Why is the following Arrow Function invalid?
+                <hr>
+                <pre class="bg-white">
+                <span class="variables">let</span> sayHi <span class="operators">=&gt;</span> alert(<span class="strings">"Hello!"</span>);
+                sayHi();
+                </pre>
+                <hr>
+                <ul class="list-group">
+                    <li class="list-group-item"><input type="radio" name="q6" value="a"> <span
+                            class="myCode variables">let</span> is an invalid Javascript keyword</li>
+                    <li class="list-group-item"><input type="radio" name="q6" value="b"> An arrow function needs to be
+                        in the form <span class="myCode"><span class="variables">let</span> sayHi <span
+                                class="operators">=</span> {} <span class="operators">=&gt;</span> alert(<span
+                                class="strings">"Hello!"</span>);</span>, even if there are no arguments</li>
+                    <li class="list-group-item"><input type="radio" name="q6" value="c"> You cannont create an arrow
+                        function without arguments</li>
+                    <li class="list-group-item"><input type="radio" name="q6" value="d"> An arrow function needs to be
+                        in the form <span class="myCode"><span class="variables">let</span> sayHi <span
+                                class="operators">=</span> () <span class="operators">=&gt;</span> alert(<span
+                                class="strings">"Hello!"</span>);</span>, even if there are no arguments</li>
+                </ul>
+
+                <hr>
+
+                <button type="button" onclick="checkAnswer('q6')" id="q6button" class="btn bg-warning text-white">Check
+                    Answer</button>
+
+            </div>
+        </div>
+        <a href=".">BACK</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+    <script src="../../js/quiz.js"></script>
+</body>
+
+</html>

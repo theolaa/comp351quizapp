@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="shortcut icon" type="image/ico" href="../../../img/favicon.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<title>THEO COMP 351</title>
+
+<body class="bg-light">
+    <div class="container">
+        <h1>Theo's COMP 351 Website - Lab 4 - Node Server Filesystem</h1>
+        <div class="row">
+            <div class="col">
+                <h3>Automatic Method</h3>
+                Write: (Text to write to file)
+                <div class="row"><input type="text" name="write" id="write" class="col"><button
+                        class="btn col-2 bg-primary text-light"
+                        onclick="window.location='./writeFile/?text=' + document.getElementById('write').value">Write</button>
+                </div>
+                Read: (File name)
+                <div class="row"><input type="text" name="read" id="read" class="col"><button
+                        class="btn col-2 bg-primary text-light"
+                        onclick="window.location='./readFile/' + document.getElementById('read').value">Read</button>
+                </div>
+                <button class="row btn bg-danger text-light my-2" onclick="window.location='./delFile/'">Delete File</button>
+            </div>
+            <div class="col">
+                <h3>Manual Method</h3>
+                Please copy one of the following urls into your address bar, and replace the text in square brackets
+                with appropriate values.
+                <ul>
+                    <li>https://theocomp351website.herokuapp.com/COMP351/Labs/lab4/readFile/[filenamehere]</li>
+                    <li>https://theocomp351website.herokuapp.com/COMP351/Labs/lab4/writeFile/?text=[texthere]</li>
+                </ul>
+            </div>
+        </div>
+        <a href="..">BACK</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

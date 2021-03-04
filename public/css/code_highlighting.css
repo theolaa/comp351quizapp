@@ -1,0 +1,32 @@
+.loops {
+    color: orange;
+}
+
+.variables {
+    color: red;
+}
+
+.operators {
+    color: purple;
+}
+
+.objects {
+    color: lightseagreen;
+}
+
+.strings {
+    color: seagreen;
+}
+
+.numbers {
+    color: blue;
+}
+
+.booleans {
+    color:slateblue
+}
+
+.myCode {
+    background-color: white;
+    font-family: Consolas;
+}
