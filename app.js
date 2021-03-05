@@ -6,7 +6,7 @@ const mysql = require('mysql');
 const fs = require('fs');
 const path = require('path');
 const url = require('url');
-const quiz = require('./modules/personal_project')
+const quiz = require('./modules/quiz_project')
 
 console.log(quiz.test());
 
@@ -21,72 +21,30 @@ var port = process.env.PORT || 8080; // use port 8080 unless there exists a prec
 
 http.createServer(function (req, res) {
   let q = url.parse(path.normalize(req.url), true);
-  // console.log('Request: ', q);
+  //console.log('Request: ', q);
   let filePath = "";
 
-  // Lab 4 Write to File
-  if (q.pathname == "/COMP351/Labs/lab4/writeFile/") {
-    console.log("Writefile");
-    if (q.query["text"]) {
-      fs.appendFile(path.join(__dirname + "/public/COMP351/Labs/lab4/readFile/file.txt"), q.query["text"] + "\n", function (err) {
-        if (err) {
-          res.end("Error");
-        } else {
-          res.end("'" + q.query["text"] + "' saved to lab4/readFile/file.txt");
-        }
-      });
-    } else {
-      res.end("Please use 'text' as the query <br> Example: '?text=Hello'");
-    }
-    return;
-  }
-
-  // Lab 4 Read from File
-  else if (q.pathname.indexOf("/COMP351/Labs/lab4/readFile/") == 0) {
-    console.log("Readfile " + path.basename(q.pathname));
-    filePath = "public/" + q.pathname;
-  }
-
-  // Lab 4 Delete File
-  else if (q.pathname == "/COMP351/Labs/lab4/delFile/") {
-    fs.unlink(path.join(__dirname + "/public/COMP351/Labs/lab4/readFile/file.txt"), function () {
-      res.end("file.txt deleted");
-      return;
-    })
-  }
-
-  // Lab 5 Write to DB
-  else if (q.pathname.includes("/COMP351/Labs/lab5/write")) {
+  if (q.pathname.includes("/getquestions")) {
     if (DBconnected) {
-      con.query('INSERT INTO score VALUES ("' + q.query.name + '",' + q.query.score + ');', function (err, rows) {
-        temp = res;
-        if (err) {
-          console.log(err);
-          res.writeHead(200, { "Access-Control-Allow-Origin": "*" });
-          res.end("Error writing to DB");
-        } else {
-          res.writeHead(200, { "Access-Control-Allow-Origin": "*" });
-          res.end(q.query.name + ":" + q.query.score + " was stored in the DB");
-        }
-      });
-      return;
-    }
-  }
-
-  // Lab 5 Read from DB
-  else if (q.pathname.includes("/COMP351/Labs/lab5/read")) {
-    if (DBconnected) {
-      con.query('SELECT * FROM score;', function (err, result, fields) {
+      con.query('SELECT * FROM quizzes;', function (err, result, fields) {
         if (err) {
           console.log(err);
           res.writeHead(200, { "Access-Control-Allow-Origin": "*" });
           res.end("Error reading from DB");
         } else {
-          console.log(result);
+          questions = [];
+          // console.log(result);
           res.writeHead(200, { "Access-Control-Allow-Origin": "*" });
           for (i = 0; i < result.length; i++) {
-            res.write(result[i].name + ":" + result[i].score + "\n");
+            temp = {
+              quiz_id: result[i].quiz_id,
+              display_name: result[i].display_name,
+              quiz_data: result[i].quiz_data
+            }
+            questions.push(temp);
+            questions.push(temp);
           }
+          res.write(JSON.stringify(questions));
           res.end();
         }
       });
