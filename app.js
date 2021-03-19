@@ -68,11 +68,12 @@ http.createServer(function (req, res) {
               console.log("Success!");
             }
           });
+          res.writeHead(200, { "Access-Control-Allow-Origin": "*" });
+          res.end();
           return;
         }
 
       });
-      res.writeHead(200, { "Access-Control-Allow-Origin": "*" });
     }
   }
 
