@@ -2,7 +2,7 @@ let questions = document.getElementById("questions");
 let template = document.getElementById("template");
 let optionTemplate = document.getElementById("optionTemplate");
 let results = document.getElementById("results");
-let retrieve = JSON.parse(localStorage.getItem("questions"));
+let retrieve = JSON.parse(sessionStorage.getItem("questions"));
 
 score = 0;
 questionsAnswered = 0;

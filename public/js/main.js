@@ -1,12 +1,11 @@
 function setup() {
-    window.localStorage.clear();
     loadQuestions();
 }
 
 function loadQuestions() {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "https://theocomp351quizapp.herokuapp.com/getquestions", true);
-    //xhttp.open("GET", "http://localhost:8080/getquestions/", true);
+    //xhttp.open("GET", "https://theocomp351quizapp.herokuapp.com/getquestions", true);
+    xhttp.open("GET", "http://localhost:8080/getquestions/", true);
     xhttp.send();
     console.log("Getting Questions...");
     xhttp.onreadystatechange = function () {
@@ -16,8 +15,9 @@ function loadQuestions() {
             obj = obj[0].quiz_data;
             console.log (obj);
             if (obj) {
-                window.localStorage.setItem("questions", "["+obj+"]");
+                window.sessionStorage.setItem("questions", "["+obj+"]");
             }
+            // alert("Questions loaded successfully!");
         }
     };
 }

@@ -59,20 +59,17 @@ http.createServer(function (req, res) {
       });
       req.on('end', () => {
         console.log(body);
-
         if (DBconnected) {
           con.query('UPDATE `quizzes` SET `quiz_data` = "' + body + '" WHERE `quiz_id` = 1;', function (err, result) {
             if (err) {
               console.log(err);
             } else {
               console.log("Success!");
+              res.writeHead(200, { "Access-Control-Allow-Origin": "*", 'Content-Type': 'text/html' });
+              res.end();
             }
           });
-          res.writeHead(200, { "Access-Control-Allow-Origin": "*" });
-          res.end();
-          return;
         }
-
       });
     }
   }

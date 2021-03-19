@@ -85,15 +85,23 @@ function renumberQuestion(node, number) {
 
 function manualSave() {
     
+    console.log("Saving Questions...");
+
     saveQuestions();
 
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "https://theocomp351quizapp.herokuapp.com/savequestions", true);
-    //xhttp.open("POST", "http://localhost:8080/savequestions/", true);
+    //xhttp.open("POST", "https://theocomp351quizapp.herokuapp.com/savequestions", true);
+    xhttp.open("POST", "http://localhost:8080/savequestions/", true);
     xhttp.setRequestHeader('Content-Type', 'application/json');
-    res = JSON.stringify(window.localStorage.getItem("questions"));
+    res = JSON.stringify(window.sessionStorage.getItem("questions"));
     xhttp.send(res.substring(2,res.length-2));
-    console.log("Saving Questions...");
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log("DB Updated");
+            
+            alert("Questions saved successfully!");
+        }
+    };
 
 }
 
@@ -120,15 +128,15 @@ function saveQuestions() {
 
     }
     
-    localStorage.setItem("questions", JSON.stringify(questionsArray));
+    sessionStorage.setItem("questions", JSON.stringify(questionsArray));
     document.getElementById("savedTime").innerText = "Questions saved at " + currentTime();
 }
 
 function loadQuestions() {
 
     // Gotta use "k" here because if I use "i" it messes up for some reason...
-    if (localStorage.getItem("questions")) {
-        storageQuestions = JSON.parse(localStorage.getItem("questions"));
+    if (sessionStorage.getItem("questions")) {
+        storageQuestions = JSON.parse(sessionStorage.getItem("questions"));
         for (k = 0; k < storageQuestions.length; k++) {
             addQuestion(storageQuestions[k].questionText, storageQuestions[k].code, storageQuestions[k].options, storageQuestions[k].answer);
         }
