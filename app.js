@@ -6,7 +6,7 @@ const mysql = require('mysql');
 const fs = require('fs');
 const path = require('path');
 const url = require('url');
-const quiz = require('./modules/quiz_project')
+const quiz = require('./modules/quiz_project');
 
 console.log(quiz.test());
 
@@ -26,7 +26,7 @@ http.createServer(function (req, res) {
 
   if (q.pathname.includes("/getquestions")) {
     if (DBconnected) {
-      con.query('SELECT * FROM quizzes;', function (err, result, fields) {
+      con.query('SELECT * FROM quizzes;', function (err, result) {
         if (err) {
           console.log(err);
           res.writeHead(200, { "Access-Control-Allow-Origin": "*" });
@@ -42,13 +42,37 @@ http.createServer(function (req, res) {
               quiz_data: result[i].quiz_data
             }
             questions.push(temp);
-            questions.push(temp);
           }
           res.write(JSON.stringify(questions));
           res.end();
         }
       });
       return;
+    }
+  }
+
+  else if (q.pathname.includes("/savequestions")) {
+    if (req.method === 'POST') {
+      body = '';
+      req.on('data', chunk => {
+        body += chunk.toString(); // convert Buffer to string
+      });
+      req.on('end', () => {
+        console.log(body);
+
+        if (DBconnected) {
+          con.query('UPDATE `quizzes` SET `quiz_data` = "' + body + '" WHERE `quiz_id` = 1;', function (err, result) {
+            if (err) {
+              console.log(err);
+            } else {
+              console.log("Success!");
+            }
+          });
+          return;
+        }
+
+      });
+      res.writeHead(200, { "Access-Control-Allow-Origin": "*" });
     }
   }
 

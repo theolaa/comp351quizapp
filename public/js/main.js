@@ -12,9 +12,11 @@ function loadQuestions() {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             console.log("Received Questions.");
-            window.localStorage.setItem("quizzes", this.responseText);
-            if (JSON.parse(window.localStorage.getItem("quizzes"))[0]) {
-                window.localStorage.setItem("questions", "["+JSON.parse(this.responseText)[0].quiz_data + "]");
+            obj = JSON.parse(this.responseText);
+            obj = obj[0].quiz_data;
+            console.log (obj);
+            if (obj) {
+                window.localStorage.setItem("questions", "["+obj+"]");
             }
         }
     };

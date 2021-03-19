@@ -83,6 +83,20 @@ function renumberQuestion(node, number) {
 
 }
 
+function manualSave() {
+    
+    saveQuestions();
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "https://theocomp351quizapp.herokuapp.com/savequestions", true);
+    //xhttp.open("POST", "http://localhost:8080/savequestions/", true);
+    xhttp.setRequestHeader('Content-Type', 'application/json');
+    res = JSON.stringify(window.localStorage.getItem("questions"));
+    xhttp.send(res.substring(2,res.length-2));
+    console.log("Saving Questions...");
+
+}
+
 function saveQuestions() {
     questionsArray = [];
     for (i = 0; i < questions.children.length; i++) {
@@ -105,6 +119,7 @@ function saveQuestions() {
         questionsArray.push(question);
 
     }
+    
     localStorage.setItem("questions", JSON.stringify(questionsArray));
     document.getElementById("savedTime").innerText = "Questions saved at " + currentTime();
 }
